@@ -44,7 +44,7 @@ const getUser = async (req, res) => {
         if (existingUser) {
             return res.json(existingUser);
         } else {
-            return res.status(404).json(`User with name "${name}" does not exist.`);
+            return res.status(404).json(`User with name ${name} does not exist.`);
         }
     } catch (error) {
         console.error(error);
@@ -68,9 +68,9 @@ const updateUser = async (req, res) => {
             existingUser.name = newName; 
             await existingUser.save();
 
-            return res.json(`User with name "${name}" updated to "${newName}"`);
+            return res.json(`User with name ${name} updated to ${newName}`);
         } else {
-            return res.status(404).json(`User with name "${name}" does not exist.`);
+            return res.status(404).json(`User with name ${name} does not exist.`);
         }
     } catch (error) {
         console.error(error);
@@ -85,9 +85,9 @@ const deleteUser = async (req, res) => {
     try {
         const deletedUser = await UserModel.deleteOne({ name });
         if (deletedUser.deletedCount === 1) {
-            return res.status(200).json(`User with name "${name}" has been deleted successfully`);
+            return res.status(200).json(`User with name ${name} has been deleted successfully`);
         } else {
-            return res.status(404).json(`User with name "${name}" not found.`);
+            return res.status(404).json(`User with name ${name} not found.`);
         }
     } catch (error) {
         console.error(error);
