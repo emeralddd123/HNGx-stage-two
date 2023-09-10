@@ -7,9 +7,7 @@
 <h3>REST API Development:</h3>
 <p>Develop an API with endpoints for:</p>
 <ol>
-<li>CREATE: Adding a new person.
-</li>
-<li></li>
+<li>CREATE: Adding a new person.</li>
 <li>READ: Fetching details of a person.</li>
 <li>UPDATE: Modifying details of an existing person</li>
 <li>DELETE: Removing a person.</li>
@@ -17,11 +15,9 @@
 </ol>
 
 <h2>How to run The Project</h2>
-
 <ol>
-<li>Clone The repo and cd into the base folder<li>
-<li>run "npm install" to install all the dependencies<li>
-<li>create .env for MONGO_DB_URL and application PORT<li>
-<li>run "npm start" to start the application<li>
-<li><li>
+<li>Clone The repo and cd into the base folder</li>
+<li>run "npm install" to install all the dependencies</li>
+<li>create .env for MONGO_DB_URL and application PORT</li>
+<li>run "npm start" to start the application</li>
 <ol>
