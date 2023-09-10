@@ -95,7 +95,7 @@ const updateUser = async (req, res) => {
             existingUser.country= newCountry || existingUser.country;
             await existingUser.save();
 
-            return res.json(`User with details updated succesfully`);
+            return res.json({existingUser});
         } else {
             return res.status(404).json(`User with name ${name} does not exist.`);
         }
