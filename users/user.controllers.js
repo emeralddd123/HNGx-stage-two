@@ -58,14 +58,14 @@ const addUser = async (req, res) => {
 
 
 const getUser = async (req, res) => {
-    const { name } = req.params;
+    const { id } = req.params;
     try {
-        const existingUser = await UserModel.findOne({ name });
+        const existingUser = await UserModel.findOne({ id });
 
         if (existingUser) {
             return res.json(existingUser);
         } else {
-            return res.status(404).json(`User with name ${name} does not exist.`);
+            return res.status(404).json(`User with id ${id} does not exist.`);
         }
     } catch (error) {
         console.error(error);
@@ -75,7 +75,7 @@ const getUser = async (req, res) => {
 
 
 const updateUser = async (req, res) => {
-    const { name } = req.params;
+    const { id } = req.params;
     const { error, value } = userUpdateSchema.validate(req.body);
 
     if (error) {
@@ -87,7 +87,7 @@ const updateUser = async (req, res) => {
     const newCountry = value.country;
 
     try {
-        const existingUser = await UserModel.findOne({ name });
+        const existingUser = await UserModel.findOne({ id });
 
         if (existingUser) {
             existingUser.name = newName || existingUser.name;
@@ -97,7 +97,7 @@ const updateUser = async (req, res) => {
 
             return res.json({existingUser});
         } else {
-            return res.status(404).json(`User with name ${name} does not exist.`);
+            return res.status(404).json(`User with id ${id} does not exist.`);
         }
     } catch (error) {
         console.error(error);
@@ -107,14 +107,14 @@ const updateUser = async (req, res) => {
 
 
 const deleteUser = async (req, res) => {
-    const { name } = req.params;
+    const { id } = req.params;
 
     try {
         const deletedUser = await UserModel.deleteOne({ name });
         if (deletedUser.deletedCount === 1) {
-            return res.status(200).json(`User with name ${name} has been deleted successfully`);
+            return res.status(200).json(`User  has been deleted successfully`);
         } else {
-            return res.status(404).json(`User with name ${name} not found.`);
+            return res.status(404).json(`User with id ${id} not found.`);
         }
     } catch (error) {
         console.error(error);

@@ -20,7 +20,7 @@ const headSetter = (req, res, next) => {
 app.use(bodyParser.json())
 app.use(headSetter)
 
-app.use('/api/user', userRouter)
+app.use('/api', userRouter)
 
 
 app.get("*", (req, res) => {
