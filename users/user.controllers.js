@@ -48,7 +48,7 @@ const addUser = async (req, res) => {
             country,
         });
         await newUser.save();
-        return res.json(`User successfully added with name: ${name}`);
+        return res.json(newUser);
     } catch (error) {
         console.error(error);
         return res.status(500).json({ error: "Internal Server Error" });
@@ -60,7 +60,7 @@ const addUser = async (req, res) => {
 const getUser = async (req, res) => {
     const { id } = req.params;
     try {
-        const existingUser = await UserModel.findOne({ id });
+        const existingUser = await UserModel.findById(id);
 
         if (existingUser) {
             return res.json(existingUser);
@@ -87,7 +87,7 @@ const updateUser = async (req, res) => {
     const newCountry = value.country;
 
     try {
-        const existingUser = await UserModel.findOne({ id });
+        const existingUser = await UserModel.findById(id);
 
         if (existingUser) {
             existingUser.name = newName || existingUser.name;
@@ -110,8 +110,8 @@ const deleteUser = async (req, res) => {
     const { id } = req.params;
 
     try {
-        const deletedUser = await UserModel.deleteOne({ name });
-        if (deletedUser.deletedCount === 1) {
+        const deletedUser = await UserModel.findByIdAndDelete(id);
+        if (deletedUser) {
             return res.status(200).json(`User  has been deleted successfully`);
         } else {
             return res.status(404).json(`User with id ${id} not found.`);
